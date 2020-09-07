@@ -23,18 +23,16 @@ else:
 
 subreddit = reddit.subreddit("all")
 
-i = 1
-
 for comment in subreddit.stream.comments():
     if comment.id not in comment_replied_to:
-        if re.search("alexa play despacito", comment.body, re.IGNORECASE):
-            comment.reply(random.choice(despacito) + common)
+        if re.search("alexa play despacito 2", comment.body, re.IGNORECASE):
+            comment.reply("ɴᴏᴡ ᴘʟᴀʏɪɴɢ: Despacito 2 (ft. Lil' Pump)" + common)
             comment_replied_to.append(comment.id)
             with open("comment_replied_to.txt", "w") as f:
                 for comment_id in comment_replied_to:
                     f.write(comment_id + "\n")
-        if re.search("alexa play despacito 2", comment.body, re.IGNORECASE):
-            comment.reply("ɴᴏᴡ ᴘʟᴀʏɪɴɢ: Despacito 2 (ft. Lil' Pump)" + common)
+        if re.search("alexa play despacito", comment.body, re.IGNORECASE):
+            comment.reply(random.choice(despacito) + common)
             comment_replied_to.append(comment.id)
             with open("comment_replied_to.txt", "w") as f:
                 for comment_id in comment_replied_to:
@@ -45,6 +43,3 @@ for comment in subreddit.stream.comments():
             with open("comment_replied_to.txt", "w") as f:
                 for comment_id in comment_replied_to:
                     f.write(comment_id + "\n")
-    i+= 1
-    if i == 200:
-        break
